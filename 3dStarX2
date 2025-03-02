@@ -1,0 +1,15 @@
+from vpython import *
+import math
+scene = canvas(width=800, height=800)
+scene.background = color.black
+scene.center = vector(0, 0, 0)
+pos = vector(0, 0, 0)
+angle = 0
+scale = 10
+for i in range(15):
+    z_offset = 5 if i % 2 == 0 else -5
+    new_pos = pos + vector(scale * math.cos(angle), scale * math.sin(angle), z_offset)
+    curve(pos=[pos, new_pos], color=color.blue, radius=0.1)
+    pos = new_pos
+    angle -= math.radians(144)
+scene.waitfor("click")
